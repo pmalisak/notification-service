@@ -1,0 +1,5 @@
+notification_controllers:
+    resource:
+        path: ../src/Notification/UserInterface/Controller
+        namespace: App\Notification\UserInterface\Controller
+    type: attribute
