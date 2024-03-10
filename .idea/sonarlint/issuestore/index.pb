@@ -225,3 +225,5 @@ O
 tests/Support/Helper/.gitignore,b/5/b5244ce76f783687b69a38d2e6685d5c6b4eaf78
 S
 #tests/Support/_generated/.gitignore,a/9/a9b576983a1b01f734512e4d8cd6747c6c47be92
+^
+.tests/Functional/Flow/SendNotificationCest.php,6/7/67f5a3f11ce0d6303ca435ba7fd9f479ae73f3a1

@@ -34,6 +34,9 @@
     "require-dev": {
         "codeception/codeception": "^5.1",
         "codeception/module-asserts": "^3.0",
+        "codeception/module-doctrine2": "^3.0",
+        "codeception/module-phpbrowser": "^3.0",
+        "codeception/module-rest": "^3.3",
         "codeception/module-symfony": "^3.3",
         "phpstan/phpstan": "^1.10",
         "phpstan/phpstan-phpunit": "^1.3"

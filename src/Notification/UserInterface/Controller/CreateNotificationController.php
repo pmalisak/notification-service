@@ -28,12 +28,15 @@ class CreateNotificationController
     public function __invoke(#[MapRequestPayload] CreateNotificationPayload $payload): JsonResponse
     {
         $this->commandBus->dispatch(new CreateNotificationCommand(
-            Uuid::v4(),
+            $id = Uuid::v4(),
             $payload->customerId,
             \array_map(fn ($channel) => Channel::from($channel), $payload->channels),
             $payload->message,
         ));
 
-        return new JsonResponse(['message' => 'Notification has been accepted']);
+        return new JsonResponse([
+            'notificationId' => $id,
+            'message' => 'Notification has been accepted'
+        ]);
     }
 }
