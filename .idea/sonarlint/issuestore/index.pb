@@ -243,3 +243,5 @@ i
 9src/Notification/Application/Exception/LogicException.php,0/6/067c6b6951058ddda13ba23de88dd41521bb85c5
 e
 5src/Shared/Infrastructure/Symfony/ErrorSubscriber.php,b/c/bc0c1c4db90f70046805b7e89628b3be6c2487e0
+x
+Hsrc/Notification/Infrastructure/Doctrine/Exception/NotFoundException.php,a/c/acefa2aa3fc5a6fd4310245260a325bf78b9587c

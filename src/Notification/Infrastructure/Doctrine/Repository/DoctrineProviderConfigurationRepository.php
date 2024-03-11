@@ -8,6 +8,7 @@ use App\Notification\Domain\Channel;
 use App\Notification\Domain\Provider\Provider;
 use App\Notification\Domain\Provider\ProviderConfiguration;
 use App\Notification\Domain\Provider\ProviderConfigurationRepository;
+use App\Notification\Infrastructure\Doctrine\Exception\NotFoundException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -29,6 +30,6 @@ class DoctrineProviderConfigurationRepository extends ServiceEntityRepository im
     public function get(Provider $provider, Channel $channel): ProviderConfiguration
     {
         return $this->findOneBy(['provider' => $provider, 'channel' => $channel])
-            ?? throw new \Exception('Not found');
+            ?? throw new NotFoundException('ProviderConfiguration not found');
     }
 }

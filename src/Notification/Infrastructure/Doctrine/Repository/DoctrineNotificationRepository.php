@@ -6,6 +6,7 @@ namespace App\Notification\Infrastructure\Doctrine\Repository;
 
 use App\Notification\Domain\Notification;
 use App\Notification\Domain\Repository\NotificationRepository;
+use App\Notification\Infrastructure\Doctrine\Exception\NotFoundException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Uid\Uuid;
@@ -21,7 +22,7 @@ class DoctrineNotificationRepository extends ServiceEntityRepository implements 
     }
     public function get(Uuid $notificationId): Notification
     {
-        return $this->find($notificationId) ?: throw new \Exception('Not found');
+        return $this->find($notificationId) ?: throw new NotFoundException('Notification not found');
     }
 
     public function add(Notification $notification): void
