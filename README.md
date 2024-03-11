@@ -13,6 +13,8 @@ docker exec -it transfersgo-php-1 sh
 composer install
 bin/console doctrine:database:create
 bin/console doctrine:database:create --env=test
+bin/console doctrine:migrations:migrate
+bin/console doctrine:migrations:migrate --env=test
 bin/console doctrine:fixtures:load
 bin/console doctrine:fixtures:load --env=test
 ```
