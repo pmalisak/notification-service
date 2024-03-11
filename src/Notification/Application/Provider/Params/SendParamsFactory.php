@@ -28,7 +28,6 @@ class SendParamsFactory
                 $notification->getChannel($callId),
             ),
             Provider::TWILIO => $this->prepareTwilioParams($notification, $callId),
-            default => throw new \Exception('Params for provider %s not supported'),
         };
     }
 

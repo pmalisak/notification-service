@@ -19,7 +19,7 @@ use Symfony\Component\Uid\Uuid;
 class Notification
 {
     /**
-     * @var Collection<Call>
+     * @var Collection<int, Call>
      */
     private Collection $calls;
 
@@ -131,6 +131,9 @@ class Notification
         return new NotificationFailed();
     }
 
+    /**
+     * @param Provider[] $providers
+     */
     public function findDifferentProvider(array $providers): ?Provider
     {
         $availableProviders = array_diff(
@@ -139,6 +142,7 @@ class Notification
 
         return $availableProviders ? Provider::from(\reset($availableProviders)) : null;
     }
+
     public function getId(): Uuid
     {
         return $this->id;

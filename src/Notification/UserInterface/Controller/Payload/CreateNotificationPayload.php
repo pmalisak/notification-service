@@ -8,6 +8,9 @@ use Symfony\Component\Uid\Uuid;
 
 final readonly class CreateNotificationPayload
 {
+    /**
+     * @param string[] $channels
+     */
     public function __construct(
         public Uuid $customerId,
         public array $channels,

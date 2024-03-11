@@ -18,7 +18,7 @@ final readonly class ProviderGatewayLocator
     ) {
     }
 
-    public function get(Provider $provider): object
+    public function get(Provider $provider): ProviderGateway
     {
         foreach ((array) $this as $gateway) {
             if (! $gateway instanceof ProviderGateway) {

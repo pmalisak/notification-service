@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Notification\Application\Command;
 
+use App\Notification\Application\Exception\LogicException;
 use App\Notification\Application\Provider\SendAdapter;
 use App\Notification\Application\Service\ProviderFinder;
 use App\Notification\Domain\Repository\NotificationRepository;
@@ -55,7 +56,10 @@ final readonly class SendNotificationHandler implements CommandHandlerInterface
         $this->unitOfWork->commit();
 
         if ($settleFailureResult->shouldBeSentImmediately()) {
-            $this->commandBus->dispatch(new SendNotificationCommand($command->notificationId, $settleFailureResult->getCallId()));
+            $this->commandBus->dispatch(new SendNotificationCommand(
+                $command->notificationId,
+                $settleFailureResult->getCallId() ?? throw new LogicException('Call id not set'),
+            ));
         }
     }
 }

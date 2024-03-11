@@ -22,7 +22,7 @@ bin/console doctrine:fixtures:load --env=test
 ```shell
 vendor/bin/codecept run Unit
 vendor/bin/codecept run Functional
-vendor/bin/phpstan
+vendor/bin/phpstan # level 9
 ```
 
 ## Provider Setup
@@ -46,4 +46,24 @@ There are two endpoints:
 1. create notification
 2. update provider configuration
 
-# What is done
+I am sorry, no endpoint for fetch, you need to check database ( port 5430 ! ).
+
+## What is done
+
+- you can send notification 
+- you can define several providers for the same type of notification channel
+- a notification is delayed and later resent if all providers fail ( retry strategy )
+- architecture:
+  - DDD ( Notification aggregate )
+  - Hexagonal
+  - CQRS
+- unit and functional tests 
+
+## What is not done
+
+- bonuses
+- there is no second provider, instead there is a mock
+
+## What could be done better
+
+- add: phpcs, infection, deptrac, more tests

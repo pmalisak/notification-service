@@ -10,6 +10,9 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @extends ServiceEntityRepository<Notification>
+ */
 class DoctrineNotificationRepository extends ServiceEntityRepository implements NotificationRepository
 {
     public function __construct(ManagerRegistry $registry)

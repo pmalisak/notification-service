@@ -1,5 +1,15 @@
+includes:
+	- phpstan-baseline.neon
+
 parameters:
-    level: 3
+    level: 9
     paths:
         - src/
         - tests/Unit/
+    ignoreErrors:
+        -
+          message: '#Property [a-zA-Z0-9\\_]+::\$[a-zA-Z]+ is never read, only written.#'
+          path: src/Notification/Domain/*
+        -
+          message: '#Property [a-zA-Z0-9\\_]+::\$[a-zA-Z]+ is never read, only written.#'
+          path: src/Notification/Application/Locator/ProviderGatewayLocator.php

@@ -32,6 +32,9 @@ SQL;
 
         $result = $this->connection->executeQuery($sql, ['status' => CallStatus::NEW->value]);
 
+        /**
+         * @var array{notification_id: string, id: string} $call
+         */
         foreach ($result->fetchAllAssociative() as $call) {
             $this->commandBus->dispatch(new SendNotificationCommand(
                 Uuid::fromString($call['notification_id']),

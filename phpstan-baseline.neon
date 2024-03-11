@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method App\\\\Notification\\\\Application\\\\Locator\\\\ProviderGatewayLocator\\:\\:get\\(\\) return type with generic interface App\\\\Notification\\\\Application\\\\Provider\\\\ProviderGateway does not specify its types\\: T$#"
+			count: 1
+			path: src/Notification/Application/Locator/ProviderGatewayLocator.php

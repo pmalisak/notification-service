@@ -11,6 +11,9 @@ use App\Notification\Domain\Provider\ProviderConfigurationRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @extends ServiceEntityRepository<ProviderConfiguration>
+ */
 class DoctrineProviderConfigurationRepository extends ServiceEntityRepository implements ProviderConfigurationRepository
 {
     public function __construct(ManagerRegistry $registry)

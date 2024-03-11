@@ -237,3 +237,9 @@ q
 Asrc/Notification/Infrastructure/Doctrine/Mapping/Schedule.orm.xml,7/c/7c77da5d5c3bd134d1272398f6be0db0c61f3c2f
 \
 ,postman/notification.postman_collection.json,1/3/138f452b177c3f6a271eb8f04b254929be706521
+E
+phpstan-baseline.neon,5/1/51c4415058c9e8a2d6695da6e410df016e31be96
+i
+9src/Notification/Application/Exception/LogicException.php,0/6/067c6b6951058ddda13ba23de88dd41521bb85c5
+e
+5src/Shared/Infrastructure/Symfony/ErrorSubscriber.php,b/c/bc0c1c4db90f70046805b7e89628b3be6c2487e0

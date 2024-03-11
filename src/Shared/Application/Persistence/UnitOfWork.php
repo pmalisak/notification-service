@@ -6,5 +6,5 @@ namespace App\Shared\Application\Persistence;
 
 interface UnitOfWork
 {
-    public function commit();
+    public function commit(): void;
 }
