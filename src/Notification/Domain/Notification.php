@@ -121,7 +121,7 @@ class Notification
             return new ChangeOfProvider($this->create($call->getChannel(), $differentProvider));
         }
 
-        if ($retryStrategy->retryAllowed($providers, $this->getCallsByChannel($call->getChannel()))) {
+        if ($retryStrategy->retryAllowed($call->getProvider(), $this->getCallsByChannel($call->getChannel()))) {
             $this->create($call->getChannel(), $call->getProvider(), $retryStrategy->getNextRetryDate());
             $this->status = Status::RETRY;
             return new NotificationToRetry();
@@ -170,7 +170,7 @@ class Notification
 
     private function getCall(Uuid $callId): Call
     {
-        $result = array_filter($this->calls->toArray(), fn (Call $call) => $call->getId() === $callId);
+        $result = array_filter($this->calls->toArray(), fn (Call $call) => $call->getId() == $callId);
         return count($result) === 1
             ? current($result)
             : throw new NotFoundException(\sprintf('Call not found, id: %s', $callId));

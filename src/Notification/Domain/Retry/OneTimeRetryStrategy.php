@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Notification\Domain\Retry;
 
 use App\Notification\Domain\CallData;
+use App\Notification\Domain\Provider\Provider;
 
 class OneTimeRetryStrategy implements RetryStrategy
 {
@@ -13,18 +14,16 @@ class OneTimeRetryStrategy implements RetryStrategy
     /**
      * @inheritdoc
      */
-    public function retryAllowed(array $providers, array $calls): bool
+    public function retryAllowed(Provider $provider, array $calls): bool
     {
         $providerCount = array_count_values(array_map(fn (CallData $callData) => $callData->provider->value, $calls));
 
-        foreach ($providers as $provider) {
-            if (! isset($providerCount[$provider->value])) {
-                return true;
-            }
+        if (! isset($providerCount[$provider->value])) {
+            return true;
+        }
 
-            if ($providerCount[$provider->value] <= self::ALLOWED_QUANTITY_OF_RETRY) {
-                return true;
-            }
+        if ($providerCount[$provider->value] <= self::ALLOWED_QUANTITY_OF_RETRY) {
+            return true;
         }
 
         return false;

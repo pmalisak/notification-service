@@ -73,7 +73,7 @@ class NotificationTest extends TestCase
             $callId,
             [Provider::MOCKER],
             new class implements RetryStrategy {
-                public function retryAllowed(array $providers, array $calls): bool
+                public function retryAllowed(Provider $provider, array $calls): bool
                 {
                     return true;
                 }
@@ -97,7 +97,7 @@ class NotificationTest extends TestCase
             $callId,
             [Provider::MOCKER, Provider::TWILIO],
             new class implements RetryStrategy {
-                public function retryAllowed(array $providers, array $calls): bool
+                public function retryAllowed(Provider $provider, array $calls): bool
                 {
                     return true;
                 }
@@ -121,7 +121,7 @@ class NotificationTest extends TestCase
             $callId,
             [Provider::MOCKER],
             new class implements RetryStrategy {
-                public function retryAllowed(array $providers, array $calls): bool
+                public function retryAllowed(Provider $provider, array $calls): bool
                 {
                     return false;
                 }

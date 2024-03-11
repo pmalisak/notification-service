@@ -2,22 +2,48 @@
 
 ## Getting Started
 
-1. If not already done, [install Docker Compose](https://docs.docker.com/compose/install/) (v2.10+)
-2. Run `docker compose build --no-cache` to build fresh images
-3. Run `docker compose up --pull always -d --wait` to start the project
-4. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
-5. Run `docker compose down --remove-orphans` to stop the Docker containers.
+`docker compose build --no-cache` to build fresh images
 
-`bin/console doctrine:fixtures:load`
+`docker compose up` - to run application
+
+Setup application:
+
+```shell
+docker exec -it transfersgo-php-1 sh
+composer install
+bin/console doctrine:database:create
+bin/console doctrine:database:create --env=test
+bin/console doctrine:fixtures:load
+bin/console doctrine:fixtures:load --env=test
+```
+
+## Run tests
+
+```shell
+vendor/bin/codecept run Unit
+vendor/bin/codecept run Functional
+vendor/bin/phpstan
+```
 
 ## Provider Setup
 
+There are currently two providers: "Twilio" and "Mocker".
+
 In .env file set `TWILIO_SID` and `TWILIO_TOKEN` parameters.
 
-## Features
+## Retry
 
+There is no supervisor installed. We have to manually run the command to send scheduled notifications ( e.g. due to retry ).
 
-## Docs
+`bin/console worker:notification:send-scheduled`
 
+## Endpoints
 
-## License
+Download postman and import `postman/notification.postman_collection.json`.
+
+There are two endpoints:
+
+1. create notification
+2. update provider configuration
+
+# What is done

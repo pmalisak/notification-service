@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "58ee2170-f47b-41e0-91bb-af473d0eefe9",
+		"name": "Notification (TransfersGo)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16908693"
+	},
+	"item": [
+		{
+			"name": "Update provider configuration",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"enabled\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost/provider/:provider/channel/:channel/configuration",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"provider",
+						":provider",
+						"channel",
+						":channel",
+						"configuration"
+					],
+					"variable": [
+						{
+							"key": "provider",
+							"value": "mocker"
+						},
+						{
+							"key": "channel",
+							"value": "sms"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create notification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": \"4fd46702-5071-4ea3-810a-2bf7b6925e6b\",\n    \"channels\": [\n        \"sms\",\n        \"email\"\n    ],\n    \"message\": \"I wish you a nice day!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost/notification",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"notification"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

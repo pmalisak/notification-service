@@ -30,6 +30,7 @@ final readonly class SendNotificationHandler implements CommandHandlerInterface
         $notification = $this->notificationRepository->get($command->notificationId);
 
         $notification->startDelivery($command->callId);
+        $this->unitOfWork->commit();
 
         $result = $this->sendAdapter->send($notification, $command->callId);
 
@@ -44,10 +45,11 @@ final readonly class SendNotificationHandler implements CommandHandlerInterface
 
         $settleFailureResult = $notification->settleFailure($command->callId, $providers, new OneTimeRetryStrategy());
 
-        $this->logger->info('Settle notification failure: notification {id}, call {callId}, status {status}', [
+        $this->logger->error('Settle notification failure: notification {id}, call {callId}', [
             'id' => $notification->getId(),
             'callId' => $command->callId,
             'status' => $notification->getStatus()->value,
+            'result' => get_class($settleFailureResult),
         ]);
 
         $this->unitOfWork->commit();

@@ -10,10 +10,9 @@ use App\Notification\Domain\Provider\Provider;
 interface RetryStrategy
 {
     /**
-     * @param Provider[] $providers
      * @param CallData[] $calls
      */
-    public function retryAllowed(array $providers, array $calls): bool;
+    public function retryAllowed(Provider $provider, array $calls): bool;
 
     public function getNextRetryDate(): \DateTimeImmutable;
 }

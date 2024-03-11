@@ -32,7 +32,7 @@ class OneTimeRetryStrategyTest extends TestCase
         $this->notification->create(Channel::SMS, Provider::MOCKER);
         $calls = $this->notification->getCalls();
 
-        $this->assertTrue($this->strategy->retryAllowed([Provider::MOCKER], $calls));
+        $this->assertTrue($this->strategy->retryAllowed(Provider::MOCKER, $calls));
     }
 
     public function testMultipleProvidersRetryAllowed(): void
@@ -41,7 +41,7 @@ class OneTimeRetryStrategyTest extends TestCase
         $this->notification->create(Channel::SMS, Provider::MOCKER);
         $calls = $this->notification->getCalls();
 
-        $this->assertTrue($this->strategy->retryAllowed([Provider::MOCKER, Provider::TWILIO], $calls));
+        $this->assertTrue($this->strategy->retryAllowed(Provider::TWILIO, $calls));
     }
 
     public function testRetryNotAllowed(): void
@@ -50,6 +50,6 @@ class OneTimeRetryStrategyTest extends TestCase
         $this->notification->create(Channel::SMS, Provider::MOCKER);
         $calls = $this->notification->getCalls();
 
-        $this->assertFalse($this->strategy->retryAllowed([Provider::MOCKER], $calls));
+        $this->assertFalse($this->strategy->retryAllowed(Provider::MOCKER, $calls));
     }
 }
